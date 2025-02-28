@@ -24,11 +24,53 @@ class Doctor(models.Model):
         return self.name+ " " +self.department
 
 #create staff model
-#first,last,position,phone number,email,hire date
+#first,last,position,phone number,email,hiredate
 #atleast 5
 #return firstname and lastname
 
 #create ward model
 #name,total beds,beds available,
 #return name
+
+class Staff(models.Model):
+    firstname = models.CharField(max_length=50)
+    lastname = models.CharField(max_length=50)
+    position = models.CharField(max_length=50)
+    phonenumber = models.CharField(max_length=15)
+    email = models.EmailField()
+    hiredate = models.DateField()
+
+    def __str__(self):
+        return self.firstname + " " + self.lastname
+
+class Ward(models.Model):
+    name = models.CharField(max_length=50)
+    totalbeds = models.IntegerField()
+    bedsavailable = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+
+class Appointment (models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    phone = models.CharField(max_length=15)
+    date = models.DateTimeField()
+    department = models.CharField(max_length=50)
+    doctor = models.CharField(max_length=50)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+class Contact (models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+    subject = models.CharField(max_length=50)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+
 
